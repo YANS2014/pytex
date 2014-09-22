@@ -1,5 +1,4 @@
 # coding:utf-8
-
 import sys
 import re
 import json
@@ -12,14 +11,15 @@ def data_repl(matchobj):
         val = "ERROR"
     except SyntaxError:
         val = "SYNTAXERROR"
-    return val
+    return unicode(val)
 
 
 def main():
     for line in sys.stdin.readlines():
-        line = line.strip()
+        origin = line  = line.strip()
         if line.startswith("%%% config"):
             flag = True
+            print line
             continue
         elif line.startswith("%%%"):
             flag = False
@@ -31,9 +31,8 @@ def main():
                 exec template.format(label, path)
             except IOError, err:
                 print err
-                exit(1)
 
-        print re.sub("{#(.+)#}", data_repl, line.decode("utf-8"))
+        print re.sub(r"{@(.+)@}", data_repl, origin.decode('utf-8')).encode('utf-8')
 
 
 if __name__ == '__main__':
