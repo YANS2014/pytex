@@ -1,4 +1,4 @@
-ReportTool
+pytex
 ==========
 若手の会 - オープンタスク
 論文(TeX)を書くときに使えるツールを作りたい.
@@ -94,27 +94,29 @@ python pytex.py < src/sample.tex > reports.tex
 %%% config
 % data:/home/takeno/Documents/pytex/src/data.json
 %%%
-\documentclass[uplatex]{jsarticle} 
-\usepackage[dvipdfmx]{graphicx}                                     
-\usepackage{tabularx,setspace,booktabs,multirow} 
+\documentclass[uplatex]{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{tabularx,setspace,booktabs,multirow}
 
 
 \begin{document}
 
-\title{tex中にjsonファイルの内容を埋め込む} 
+\title{tex中にjsonファイルの内容を埋め込む}
 \author{
-    若手 太郎,
+長岡 太郎
 }
 \maketitle
 
 データを分離したい.
-例えば私の名前は{@ data['worker'] @}を表示したい
+例えば私の名前は長岡 太郎を表示したい
+
 
 \section{実験結果}
 今回チューニングをグリッドサーチで行った
-パラメータは$\gamma$ は {@ data["expt1"]["parameters"]["gamma"] @}であった.
-そして精度は{@ data["expt1"]["precesion"] @}であった
+パラメータは$\gamma$ は 210であった.
+そして精度は0.7であった
 
 \end{document}
+ 
 ```
 
