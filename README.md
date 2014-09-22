@@ -41,15 +41,29 @@ jsonファイル(~/Documents/ReportTool/src/data.json)
 ``` json
 {
     "worker" : "長岡 太郎",
-    "precesion" : 0.70,
-    "recall" : 0.45,
-    "parameters" : 
-        { 
-            "alpha" : 0.75,
-            "beta": 0.50,
-            "gamma" : 210
-        },
-    "timestamp" : "20140823"
+    "expt1" : {
+        "precesion" : 0.70,
+        "recall" : 0.45,
+        "parameters" : 
+            { 
+                "alpha" : 0.75,
+                "beta": 0.50,
+                "gamma" : 210
+            },
+        "timestamp" : "2014-07-15"
+    },
+    "expt2" : {
+        "precesion" : 0.70,
+        "recall" : 0.45,
+        "parameters" : 
+            { 
+                "alpha" : 0.75,
+                "beta": 0.50,
+                "gamma" : 210
+            },
+        "timestamp" : "2014-08-25"
+    },
+    "timestamp" : "2014-09-23"
 }
 ```
 
@@ -61,17 +75,32 @@ python pytex.py src/sample.tex > reports.tex
 結果
 ``` tex
 %%% config
-% data:~/Documents/ReportTool/src/data.json
+% data1:/home/takeno/Documents/ReportTool/src/data.json
 %%%
 \documentclass[twocolumn,uplatex]{jsarticle} 
 \usepackage[dvipdfmx]{graphicx}                                     
 \usepackage{tabularx,setspace,booktabs,multirow} 
 
-……
+% subfigure の packages 設定
+
+\begin{document}
+
+\title{tex中にjsonファイルの内容を埋め込む} 
+\author{
+    若手 太郎,
+}
+\date{takeno@jnlp.org} 
+\maketitle
+
+データを分離したい.
+例えば私の名前は{@ data['worker'] @}を表示したい
+
 \section{実験結果}
-実験結果を\ref{tbl:baseline}に示す.
 今回チューニングをグリッドサーチで行った
-パラメータは0.75であった.
-そして精度は70\%であった.
+結果は{@ data["expt1"]["parameters"]["gamma"] @}であった.
+そして精度は{@ data["expt1"]["precesion"] @}であった
+
+\end{document}
+ 
 ```
 
