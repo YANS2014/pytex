@@ -1,7 +1,7 @@
 %%% config
-% data:/home/username/Documents/pytex/src/data.json
+% data:/home/takeno/Documents/pytex/src/data.json
 %%%
-\documentclass[twocolumn,uplatex]{jsarticle} 
+\documentclass[uplatex]{jsarticle} 
 \usepackage[dvipdfmx]{graphicx}                                     
 \usepackage{tabularx,setspace,booktabs,multirow} 
 
@@ -10,16 +10,17 @@
 
 \title{tex中にjsonファイルの内容を埋め込む} 
 \author{
-    若手 太郎,
+    {@ data['author'] @}
 }
 \maketitle
 
 データを分離したい.
-例えば私の名前は{@ data['worker'] @}を表示したい
+例えば私の名前は{@ data['author'] @}を表示したい
+
 
 \section{実験結果}
 今回チューニングをグリッドサーチで行った
-結果は{@ data["expt1"]["parameters"]["gamma"] @}であった.
+パラメータは$\gamma$ は {@ data["expt1"]["parameters"]["gamma"] @}であった.
 そして精度は{@ data["expt1"]["precesion"] @}であった
 
 \end{document}

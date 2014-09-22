@@ -116,6 +116,5 @@ python pytex.py < src/sample.tex > reports.tex
 そして精度は{@ data["expt1"]["precesion"] @}であった
 
 \end{document}
- 
 ```
 
