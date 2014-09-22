@@ -14,6 +14,10 @@ ReportTool
 latexからjsonファイルを読み出す方法が特に無い. (別の手段が使えるからか？)
 CSVファイルを読み込むことはできるっぽい. 
 
+##Install
+```zsh
+git clone https://github.com/YANS2014/pytex.git
+```
 
 ##Usage
 簡単なテンプレートエンジンみたいなもので
@@ -22,25 +26,38 @@ CSVファイルを読み込むことはできるっぽい.
 texファイル(~/Documents/ReportTool/src/sample.json)
 ``` tex
 %%% config
-% data:~/Documents/ReportTool/src/data.json
+% data1:/home/takeno/Documents/ReportTool/src/data.json
 %%%
 \documentclass[twocolumn,uplatex]{jsarticle} 
 \usepackage[dvipdfmx]{graphicx}                                     
 \usepackage{tabularx,setspace,booktabs,multirow} 
 
-……
-\section{実験結果}
+% subfigure の packages 設定
 
-実験結果を\ref{tbl:baseline}に示す.
+\begin{document}
+
+\title{tex中にjsonファイルの内容を埋め込む} 
+\author{
+    若手 太郎,
+}
+\date{takeno@jnlp.org} 
+\maketitle
+
+データを分離したい.
+例えば私の名前は{@ data['worker'] @}を表示したい
+
+\section{実験結果}
 今回チューニングをグリッドサーチで行った
-パラメータは{# data["parameters"]["gamma"] #}であった.
-そして精度は{# data["precesion"] * 100 #}\%であった
+結果は{@ data["expt1"]["parameters"]["gamma"] @}であった.
+そして精度は{@ data["expt1"]["precesion"] @}であった
+
+\end{document}
 ```
 
 jsonファイル(~/Documents/ReportTool/src/data.json)
 ``` json
 {
-    "worker" : "長岡 太郎",
+    "author" : "長岡 太郎",
     "expt1" : {
         "precesion" : 0.70,
         "recall" : 0.45,
@@ -69,19 +86,18 @@ jsonファイル(~/Documents/ReportTool/src/data.json)
 
 コマンド
 ``` python
-python pytex.py src/sample.tex > reports.tex
+python pytex.py < src/sample.tex > reports.tex
 ```
 
 結果
 ``` tex
 %%% config
-% data1:/home/takeno/Documents/ReportTool/src/data.json
+% data:/home/takeno/Documents/pytex/src/data.json
 %%%
-\documentclass[twocolumn,uplatex]{jsarticle} 
+\documentclass[uplatex]{jsarticle} 
 \usepackage[dvipdfmx]{graphicx}                                     
 \usepackage{tabularx,setspace,booktabs,multirow} 
 
-% subfigure の packages 設定
 
 \begin{document}
 
@@ -89,7 +105,6 @@ python pytex.py src/sample.tex > reports.tex
 \author{
     若手 太郎,
 }
-\date{takeno@jnlp.org} 
 \maketitle
 
 データを分離したい.
@@ -97,7 +112,7 @@ python pytex.py src/sample.tex > reports.tex
 
 \section{実験結果}
 今回チューニングをグリッドサーチで行った
-結果は{@ data["expt1"]["parameters"]["gamma"] @}であった.
+パラメータは$\gamma$ は {@ data["expt1"]["parameters"]["gamma"] @}であった.
 そして精度は{@ data["expt1"]["precesion"] @}であった
 
 \end{document}

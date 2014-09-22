@@ -1,5 +1,5 @@
 {
-    "worker" : "長岡 太郎",
+    "author" : "長岡 太郎",
     "expt1" : {
         "precesion" : 0.70,
         "recall" : 0.45,
