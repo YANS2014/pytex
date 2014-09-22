@@ -1,0 +1,26 @@
+{
+    "worker" : "長岡 太郎",
+    "expt1" : {
+        "precesion" : 0.70,
+        "recall" : 0.45,
+        "parameters" : 
+            { 
+                "alpha" : 0.75,
+                "beta": 0.50,
+                "gamma" : 210
+            },
+        "timestamp" : "2014-07-15"
+    },
+    "expt2" : {
+        "precesion" : 0.70,
+        "recall" : 0.45,
+        "parameters" : 
+            { 
+                "alpha" : 0.75,
+                "beta": 0.50,
+                "gamma" : 210
+            },
+        "timestamp" : "2014-08-25"
+    },
+    "timestamp" : "2014-09-23"
+}

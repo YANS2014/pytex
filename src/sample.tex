@@ -1,0 +1,28 @@
+%%% config
+% data1:/home/takeno/Documents/ReportTool/src/data.json
+%%%
+\documentclass[twocolumn,uplatex]{jsarticle} 
+\usepackage[dvipdfmx]{graphicx}                                     
+\usepackage{tabularx,setspace,booktabs,multirow} 
+
+% subfigure の packages 設定
+
+\begin{document}
+
+\title{tex中にjsonファイルの内容を埋め込む} 
+\author{
+    若手 太郎,
+}
+\date{takeno@jnlp.org} 
+\maketitle
+
+データを分離したい.
+例えば私の名前は{@ data['worker'] @}を表示したい
+
+\section{実験結果}
+今回チューニングをグリッドサーチで行った
+結果は{@ data["expt1"]["parameters"]["gamma"] @}であった.
+そして精度は{@ data["expt1"]["precesion"] @}であった
+
+\end{document}
+
