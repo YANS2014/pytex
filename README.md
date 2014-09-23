@@ -5,6 +5,7 @@ pytex
 
 
 ##目指すこと
+
 データと文書の分離.
 
 データ(実験結果) → json
@@ -19,7 +20,8 @@ CSVファイルを読み込むことはできるっぽい.
 git clone https://github.com/YANS2014/pytex.git
 ```
 
-##Usage 簡単なテンプレートエンジンみたいなもので
+##Usage
+簡単なテンプレートエンジンみたいなもので
 実現できないかと思いました
 
 texファイル(~/Documents/pytex/src/sample.tex)
