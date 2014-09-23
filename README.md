@@ -19,8 +19,7 @@ CSVファイルを読み込むことはできるっぽい.
 git clone https://github.com/YANS2014/pytex.git
 ```
 
-##Usage
-簡単なテンプレートエンジンみたいなもので
+##Usage 簡単なテンプレートエンジンみたいなもので
 実現できないかと思いました
 
 texファイル(~/Documents/pytex/src/sample.tex)
@@ -92,8 +91,7 @@ python pytex.py < src/sample.tex > reports.tex
 結果
 ``` tex
 %%% config
-% data:/home/takeno/Documents/pytex/src/data.json
-%%%
+% data:/home/takeno/Documents/pytex/src/data.json %%%
 \documentclass[uplatex]{jsarticle}
 \usepackage[dvipdfmx]{graphicx}
 \usepackage{tabularx,setspace,booktabs,multirow}
